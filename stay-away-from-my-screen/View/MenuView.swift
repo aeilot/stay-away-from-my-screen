@@ -9,13 +9,23 @@ import SwiftUI
 
 struct MenuView: View {
     @Environment(\.openWindow) private var openWindow
+    @Environment(\.openSettings) private var openSettings
     
     var body: some View {
-        Text("Menu View")
-    }
-    
-    func buttonAction(){
-        NSApplication.shared.activate(ignoringOtherApps: true)
-        openWindow(id: "mainWindow")
+        Button("Open Main Window") {
+            NSApplication.shared.activate(ignoringOtherApps: true)
+            openWindow(id: "mainWindow")
+        }
+        
+        Button("Settings...") {
+            NSApplication.shared.activate(ignoringOtherApps: true)
+            openSettings()
+        }
+        
+        Divider()
+        
+        Button("Quit") {
+            NSApplication.shared.terminate(nil)
+        }
     }
 }

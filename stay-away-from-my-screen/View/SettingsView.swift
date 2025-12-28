@@ -38,9 +38,25 @@ struct SettingsView: View {
                         .foregroundColor(.secondary)
                 }
             }
+            
+            Section(header: Text("Popup Appearance").font(.headline)) {
+                VStack(alignment: .leading, spacing: 8) {
+                    Text("Popup Text:")
+                        .font(.subheadline)
+                    
+                    TextField("Text", text: $settings.popupText)
+                        .textFieldStyle(.roundedBorder)
+                    
+                    Text("Popup Color:")
+                        .font(.subheadline)
+                        .padding(.top, 8)
+                    
+                    ColorPicker("Background Color", selection: $settings.popupColor)
+                }
+            }
         }
         .padding(20)
-        .frame(width: 450, height: 250)
+        .frame(width: 450, height: 400)
     }
     
     private func hotKeyDisplayString() -> String {

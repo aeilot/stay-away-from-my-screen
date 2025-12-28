@@ -15,6 +15,16 @@ class HotKeyManager {
     
     private init() {
         setupNotificationObserver()
+        checkAccessibilityPermissions()
+    }
+    
+    private func checkAccessibilityPermissions() {
+        let options: NSDictionary = [kAXTrustedCheckOptionPrompt.takeUnretainedValue() as String: true]
+        let accessEnabled = AXIsProcessTrustedWithOptions(options)
+        
+        if !accessEnabled {
+            print("⚠️ Accessibility permissions not granted. Hotkeys will not work until permissions are enabled in System Settings > Privacy & Security > Accessibility")
+        }
     }
     
     private func setupNotificationObserver() {
@@ -48,12 +58,18 @@ class HotKeyManager {
             hotKeyModifiers.insert(.control)
         }
         
-        guard let key = Key(carbonKeyCode: UInt32(keyCode)) else { return }
+        guard let key = Key(carbonKeyCode: UInt32(keyCode)) else {
+            print("⚠️ Failed to create key from keyCode: \(keyCode)")
+            return
+        }
         
         hotKey = HotKey(key: key, modifiers: hotKeyModifiers)
         hotKey?.keyDownHandler = {
+            print("🔥 Hotkey pressed!")
             NotificationCenter.default.post(name: .hotKeyPressed, object: nil)
         }
+        
+        print("✅ Hotkey registered: keyCode=\(keyCode), modifiers=\(modifiers)")
     }
     
     func unregisterHotKey() {

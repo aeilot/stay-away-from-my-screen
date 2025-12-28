@@ -70,40 +70,20 @@ class PopupPanel: NSPanel {
 }
 
 struct PopupContentView: View {
+    @ObservedObject var settings = SettingsManager.shared
+    
     var body: some View {
-        VStack(spacing: 20) {
-            Text("Stay Away From My Screen")
-                .font(.title2)
-                .fontWeight(.semibold)
-            
-            Text("Panel opened at mouse location")
-                .font(.subheadline)
-                .foregroundColor(.secondary)
-            
-            HStack(spacing: 15) {
-                Button("Action 1") {
-                    print("Action 1 triggered")
-                }
-                .buttonStyle(.borderedProminent)
-                
-                Button("Action 2") {
-                    print("Action 2 triggered")
-                }
-                .buttonStyle(.bordered)
-                
-                Button("Close") {
-                    PopupPanel.shared.close()
-                }
-                .buttonStyle(.bordered)
-            }
-            
-            Spacer()
+        VStack {
+            Text(settings.popupText)
+                .font(.system(size: 24, weight: .bold))
+                .foregroundColor(.white)
+                .multilineTextAlignment(.center)
+                .padding()
         }
-        .padding(20)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(
             RoundedRectangle(cornerRadius: 12)
-                .fill(Color(NSColor.windowBackgroundColor))
+                .fill(settings.popupColor)
                 .shadow(color: Color.black.opacity(0.3), radius: 10, x: 0, y: 5)
         )
         .padding(1)

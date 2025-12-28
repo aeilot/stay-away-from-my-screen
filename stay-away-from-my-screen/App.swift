@@ -29,6 +29,7 @@ struct SAFMS_App: App {
 
 class SAFMS_AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ notification: Notification) {
+        print("📱 App launched, registering hotkey...")
         HotKeyManager.shared.registerHotKey()
         NSApp.setActivationPolicy(.accessory)
         
@@ -37,7 +38,10 @@ class SAFMS_AppDelegate: NSObject, NSApplicationDelegate {
             object: nil,
             queue: .main
         ) { _ in
+            print("🎯 Hotkey notification received, toggling popup...")
             PopupPanel.shared.toggle()
         }
+        
+        print("✅ App setup complete")
     }
 }

@@ -33,10 +33,35 @@ class SettingsManager: ObservableObject {
         }
     }
     
+    @Published var popupText: String {
+        didSet {
+            UserDefaults.standard.set(popupText, forKey: "popupText")
+        }
+    }
+    
+    @Published var popupColor: Color {
+        didSet {
+            if let colorData = try? NSKeyedArchiver.archivedData(withRootObject: NSColor(popupColor), requiringSecureCoding: false) {
+                UserDefaults.standard.set(colorData, forKey: "popupColor")
+            }
+        }
+    }
+    
     private init() {
         self.launchAtLogin = UserDefaults.standard.bool(forKey: "launchAtLogin")
         self.hotKeyModifiers = UInt(UserDefaults.standard.integer(forKey: "hotKeyModifiers"))
         self.hotKeyKeyCode = UInt16(UserDefaults.standard.integer(forKey: "hotKeyKeyCode"))
+        
+        // Load popup text
+        self.popupText = UserDefaults.standard.string(forKey: "popupText") ?? "STAY AWAY FROM MY SCREEN"
+        
+        // Load popup color
+        if let colorData = UserDefaults.standard.data(forKey: "popupColor"),
+           let nsColor = try? NSKeyedUnarchiver.unarchivedObject(ofClass: NSColor.self, from: colorData) {
+            self.popupColor = Color(nsColor)
+        } else {
+            self.popupColor = Color.red
+        }
         
         // Set default hot key: Command + Shift + S (keyCode 1)
         if hotKeyModifiers == 0 {
