@@ -21,7 +21,7 @@ struct ContentView: View {
                 .font(.subheadline)
                 .foregroundColor(.secondary)
                     }
-        .frame(minWidth: 400, minHeight: 200)
+        .frame(minWidth: 200, minHeight: 150)
     }
     
     private func hotKeyDisplayString() -> String {

@@ -15,7 +15,7 @@ struct SAFMS_App: App {
     var body: some Scene {
         Window("Stay Away From My Screen", id: "mainWindow") {
             ContentView()
-        }
+        }.defaultSize(width: 200, height: 150)
         
         MenuBarExtra("", systemImage: "exclamationmark.warninglight") {
             MenuView()

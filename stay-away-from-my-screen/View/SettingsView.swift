@@ -54,9 +54,10 @@ struct SettingsView: View {
                     ColorPicker("Background Color", selection: $settings.popupColor)
                 }
             }
-        }
+        }.navigationTitle("Settings")
+        .formStyle(.grouped)
         .padding(20)
-        .frame(width: 450, height: 400)
+        .frame(width: 450, height: 400, alignment: .topLeading)
     }
     
     private func hotKeyDisplayString() -> String {
