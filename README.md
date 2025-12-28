@@ -24,7 +24,7 @@ A lightweight macOS menu bar application that displays a customizable popup over
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/stay-away-from-my-screen.git
+   git clone https://github.com/aeilot/stay-away-from-my-screen.git
    cd stay-away-from-my-screen
    ```
 
