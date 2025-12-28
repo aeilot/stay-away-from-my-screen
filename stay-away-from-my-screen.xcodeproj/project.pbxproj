@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		E32ABA992F00E0C8000F3B7E /* HotKey in Frameworks */ = {isa = PBXBuildFile; productRef = E32ABA982F00E0C8000F3B7E /* HotKey */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		E32ABA872F00DFF1000F3B7E /* stay-away-from-my-screen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "stay-away-from-my-screen.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -23,6 +27,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E32ABA992F00E0C8000F3B7E /* HotKey in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +70,7 @@
 			);
 			name = "stay-away-from-my-screen";
 			packageProductDependencies = (
+				E32ABA982F00E0C8000F3B7E /* HotKey */,
 			);
 			productName = "stay-away-from-my-screen";
 			productReference = E32ABA872F00DFF1000F3B7E /* stay-away-from-my-screen.app */;
@@ -94,6 +100,9 @@
 			);
 			mainGroup = E32ABA7E2F00DFF1000F3B7E;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				E32ABA972F00E0C8000F3B7E /* XCRemoteSwiftPackageReference "HotKey" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = E32ABA882F00DFF1000F3B7E /* Products */;
 			projectDirPath = "";
@@ -331,6 +340,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E32ABA972F00E0C8000F3B7E /* XCRemoteSwiftPackageReference "HotKey" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/soffes/HotKey.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E32ABA982F00E0C8000F3B7E /* HotKey */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E32ABA972F00E0C8000F3B7E /* XCRemoteSwiftPackageReference "HotKey" */;
+			productName = HotKey;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E32ABA7F2F00DFF1000F3B7E /* Project object */;
 }
