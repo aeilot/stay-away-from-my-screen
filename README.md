@@ -1,5 +1,7 @@
 # Stay Away From My Screen
 
+One Key to Protect your Mac's screen!
+
 A lightweight macOS menu bar application that displays a customizable popup overlay when triggered by a global hotkey. Perfect for privacy, focus management, or quick screen blocking.
 
 ## Features
