@@ -1,6 +1,6 @@
-# Stay Away From My Screen
+<img width="128" height="128" alt="Icon-iOS-Default-1024x1024@1x" src="https://github.com/user-attachments/assets/fb5ec15e-3002-4f01-9013-c9e3004951ba" />
 
-<img width="1024" height="1024" alt="Icon-iOS-Default-1024x1024@1x" src="https://github.com/user-attachments/assets/fb5ec15e-3002-4f01-9013-c9e3004951ba" />
+# Stay Away From My Screen
 
 One Key to Protect your Mac's screen!
 
