@@ -2,9 +2,9 @@
 
 # Stay Away From My Screen
 
-One Key to Protect your Mac's screen!
+The instant digital "Do Not Touch" sign for your Mac. Stop fingerprints and protect your expensive display with one keystroke. 
 
-A lightweight macOS menu bar application that displays a customizable popup overlay when triggered by a global hotkey. Perfect for privacy, focus management, or quick screen blocking.
+We've all winced when a colleague leans in to jab their finger right onto our pristine screen to "point something out." Stay Away From My Screen is a lightweight macOS menu bar utility designed to stop that mid-motion. With a single global hotkey, deploy a massive, unmissable warning shield that effectively shouts "HANDS OFF." It's the perfect deterrent for greasy fingers, and also doubles as a quick privacy screen when you need to step away for a moment.
 
 ## Features
 
