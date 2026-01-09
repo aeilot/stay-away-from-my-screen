@@ -1,5 +1,7 @@
 # Stay Away From My Screen
 
+<img width="1024" height="1024" alt="Icon-iOS-Default-1024x1024@1x" src="https://github.com/user-attachments/assets/fb5ec15e-3002-4f01-9013-c9e3004951ba" />
+
 One Key to Protect your Mac's screen!
 
 A lightweight macOS menu bar application that displays a customizable popup overlay when triggered by a global hotkey. Perfect for privacy, focus management, or quick screen blocking.
@@ -12,6 +14,12 @@ A lightweight macOS menu bar application that displays a customizable popup over
 - 🚀 **Launch at Login**: Optional auto-start with macOS
 - 💫 **Floating Panel**: Always-on-top overlay that works across all spaces and fullscreen apps
 - ⚙️ **Menu Bar Access**: Quick access to settings and controls from the menu bar
+
+## Screenshots
+
+<img width="589" height="512" alt="image" src="https://github.com/user-attachments/assets/20db8cec-04cc-424a-8f02-144cb84acd82" />
+
+<img width="446" height="346" alt="image" src="https://github.com/user-attachments/assets/2e427223-1e1d-4a40-bccc-583fc9123e6c" />
 
 ## Requirements
 
