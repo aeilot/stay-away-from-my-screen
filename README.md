@@ -6,6 +6,8 @@ The instant digital "Do Not Touch" sign for your Mac. Stop fingerprints and prot
 
 We've all winced when a colleague leans in to jab their finger right onto our pristine screen to "point something out." Stay Away From My Screen is a lightweight macOS menu bar utility designed to stop that mid-motion. With a single global hotkey, deploy a massive, unmissable warning shield that effectively shouts "HANDS OFF." It's the perfect deterrent for greasy fingers, and also doubles as a quick privacy screen when you need to step away for a moment.
 
+<a href="https://www.producthunt.com/products/stay-away-from-my-screen?embed=true&amp;utm_source=badge-featured&amp;utm_medium=badge&amp;utm_campaign=badge-stay-away-from-my-screen" target="_blank" rel="noopener noreferrer"><img alt="STAY AWAY FROM MY SCREEN - The &quot;Don't Touch&quot; sign for your Mac's expensive screen. | Product Hunt" width="250" height="54" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1060682&amp;theme=light&amp;t=1768010846943"></a>
+
 ## Features
 
 - 🎯 **Global Hotkey**: Trigger the popup from anywhere with a customizable keyboard shortcut
