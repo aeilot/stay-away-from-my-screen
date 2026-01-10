@@ -19,6 +19,8 @@ We've all winced when a colleague leans in to jab their finger right onto our pr
 
 ## Screenshots
 
+<img width="890" height="677" alt="Screenshot 2026-01-10 at 10 10 12" src="https://github.com/user-attachments/assets/cae580f4-20a4-4f8b-9ae8-3516fb756bdc" />
+
 <img width="589" height="512" alt="image" src="https://github.com/user-attachments/assets/20db8cec-04cc-424a-8f02-144cb84acd82" />
 
 <img width="446" height="346" alt="image" src="https://github.com/user-attachments/assets/2e427223-1e1d-4a40-bccc-583fc9123e6c" />
