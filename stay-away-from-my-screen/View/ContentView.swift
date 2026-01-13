@@ -12,7 +12,13 @@ struct ContentView: View {
     @ObservedObject var settings = SettingsManager.shared
     
     var body: some View {
-        VStack(spacing: 20) {
+        VStack {
+            Image("Logo")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 64, height: 64)
+                .padding()
+            
             Text("Stay Away From My Screen")
                 .font(.title)
                 .padding()
@@ -21,7 +27,8 @@ struct ContentView: View {
                 .font(.subheadline)
                 .foregroundColor(.secondary)
                     }
-        .frame(minWidth: 200, minHeight: 150)
+        .frame(width: 400, height: 250)
+        .fixedSize()
     }
     
     private func hotKeyDisplayString() -> String {

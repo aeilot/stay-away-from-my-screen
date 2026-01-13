@@ -15,10 +15,13 @@ struct SAFMS_App: App {
     var body: some Scene {
         Window("Stay Away From My Screen", id: "mainWindow") {
             ContentView()
-        }.defaultSize(width: 200, height: 150)
+        }.defaultSize(width: 400, height: 250).windowResizability(.contentSize)
         
-        MenuBarExtra("", systemImage: "exclamationmark.warninglight") {
+        MenuBarExtra {
             MenuView()
+        } label: {
+            Image("MenuIcon")
+                .renderingMode(.template)
         }.menuBarExtraStyle(.menu)
         
         Settings {
