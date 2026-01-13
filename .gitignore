@@ -1,0 +1,41 @@
+# --- Xcode ---
+# User-specific settings (breakpoints, open tabs, etc.)
+# This is the #1 most important rule to prevent merge conflicts.
+*.xcuserdata/
+
+# Xcode State files (keeps reopening old tabs)
+*.xccheckout/
+
+# Build generated files (if configured to build inside the project folder)
+build/
+DerivedData/
+
+# Xcode Archives (App Store builds)
+*.xcarchive
+
+# --- Swift Package Manager (SPM) ---
+# These are local caches and should not be shared
+.swiftpm/xcode/
+.build/
+Packages/
+
+# --- macOS System Files ---
+# The infamous folder metadata file found everywhere on Mac
+.DS_Store
+
+# --- Dependency Managers ---
+# CocoaPods
+# We commit 'Podfile.lock', but usually ignore the 'Pods' folder itself
+Pods/
+
+# Carthage
+Carthage/Build/
+
+# --- Fastlane (Automation) ---
+fastlane/report.xml
+fastlane/screenshots/
+fastlane/test_output/
+
+# --- Miscellaneous ---
+# Files that might contain local API keys or secrets (Manual entry recommended)
+*.local.xcconfig
