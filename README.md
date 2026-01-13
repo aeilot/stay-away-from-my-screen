@@ -11,6 +11,8 @@ We've all winced when a colleague leans in to jab their finger right onto our pr
 ## Features
 
 - 🎯 **Global Hotkey**: Trigger the popup from anywhere with a customizable keyboard shortcut
+- 💥 **Cracked Screen Effect**: Realistic cracking animation at cursor position as an alternative to text warning
+- 🖐️ **Hand Tracking Detection**: Vision framework-based automatic activation when fingers stretch toward screen
 - 🎨 **Customizable Appearance**: Change the popup text and background color
 - 📍 **Smart Positioning**: Popup appears at mouse cursor location and stays on screen
 - 🚀 **Launch at Login**: Optional auto-start with macOS
@@ -29,6 +31,7 @@ We've all winced when a colleague leans in to jab their finger right onto our pr
 
 - macOS 13.0 or later
 - Accessibility permissions (for global hotkey functionality)
+- Camera permissions (optional, for hand tracking feature)
 
 ## Installation
 
@@ -59,6 +62,15 @@ For the global hotkey to work, you need to grant Accessibility permissions:
 
 The app will prompt you for these permissions on first launch.
 
+### Granting Camera Permissions (Optional)
+
+For hand tracking to work, you need to grant Camera permissions:
+
+1. Open **System Settings** > **Privacy & Security** > **Camera**
+2. Enable "Stay Away From My Screen"
+
+This is only required if you want to use the automatic hand tracking feature.
+
 ## Usage
 
 ### Basic Usage
@@ -76,9 +88,26 @@ Access settings through:
 **Available Settings:**
 
 - **Launch at Login**: Automatically start the app when you log in
-- **Global Hot Key**: Set your preferred keyboard shortcut (e.g., ⌘⇧Space)
-- **Popup Text**: Customize the message displayed in the popup
-- **Popup Color**: Choose the background color for the popup
+- **Global Hot Key**: Set your preferred keyboard shortcut (e.g., ⌘⇧S)
+- **Use Cracked Screen Effect**: Toggle between text warning and cracked screen animation
+- **Popup Text**: Customize the message displayed in the popup (when not using cracked screen)
+- **Popup Color**: Choose the background color for the popup (when not using cracked screen)
+- **Enable Hand Tracking**: Automatically activate when fingers stretch toward the screen using Vision framework
+
+### Using Cracked Screen Effect
+
+1. Open Settings
+2. Enable "Use Cracked Screen Effect"
+3. Trigger the popup with your hotkey or hand gesture
+4. A realistic cracking animation will appear at your cursor position for 3 seconds
+
+### Using Hand Tracking
+
+1. Open Settings
+2. Enable "Enable Hand Tracking"
+3. Grant camera permissions when prompted
+4. The app will now automatically detect when you or someone else reaches toward the screen
+5. The warning will activate automatically when a stretching gesture is detected
 
 ### Setting a Hotkey
 
@@ -89,29 +118,35 @@ Access settings through:
 
 ## Default Configuration
 
-- **Default Hotkey**: ⌘⇧Space (Command + Shift + Space)
-- **Default Text**: "Stay Away From My Screen"
+- **Default Hotkey**: ⌘⇧S (Command + Shift + S)
+- **Default Text**: "STAY AWAY FROM MY SCREEN"
 - **Default Color**: Red
+- **Default Effect**: Text warning (cracked screen disabled)
+- **Default Hand Tracking**: Disabled
 
 ## Project Structure
 
 ```
 stay-away-from-my-screen/
-├── App.swift                 # Main app entry point
+├── App.swift                       # Main app entry point
 ├── View/
-│   ├── ContentView.swift     # Main window view
-│   ├── MenuView.swift        # Menu bar menu
-│   ├── PopupView.swift       # Popup overlay panel
-│   └── SettingsView.swift    # Settings interface
+│   ├── ContentView.swift           # Main window view
+│   ├── MenuView.swift              # Menu bar menu
+│   ├── PopupView.swift             # Popup overlay panel
+│   ├── CrackedScreenView.swift     # Cracked screen effect
+│   └── SettingsView.swift          # Settings interface
 └── Utils/
-    ├── HotKeyManager.swift   # Global hotkey handling
-    └── SettingsManager.swift # User preferences persistence
+    ├── HotKeyManager.swift         # Global hotkey handling
+    ├── HandTrackingManager.swift   # Vision-based hand tracking
+    └── SettingsManager.swift       # User preferences persistence
 ```
 
 ## Technologies
 
 - **SwiftUI**: Modern declarative UI framework
 - **AppKit**: macOS-specific UI components and window management
+- **Vision**: Apple's framework for hand pose detection and tracking
+- **AVFoundation**: Camera capture for hand tracking
 - **HotKey**: Third-party library for global hotkey registration
 
 ## License

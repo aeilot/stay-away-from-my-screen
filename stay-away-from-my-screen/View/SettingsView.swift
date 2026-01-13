@@ -7,11 +7,13 @@
 
 import SwiftUI
 import AppKit
+import AVFoundation
 
 struct SettingsView: View {
     @ObservedObject var settings = SettingsManager.shared
     @State private var isRecordingHotKey = false
     @State private var currentHotKeyString = ""
+    @State private var cameraPermissionStatus: AVAuthorizationStatus = .notDetermined
     
     var body: some View {
         Form {
@@ -41,23 +43,62 @@ struct SettingsView: View {
             
             Section(header: Text("Popup Appearance").font(.headline)) {
                 VStack(alignment: .leading, spacing: 8) {
-                    Text("Popup Text:")
-                        .font(.subheadline)
+                    Toggle("Use Cracked Screen Effect", isOn: $settings.useCrackedScreenEffect)
+                        .help("Show cracked screen animation instead of text warning")
                     
-                    TextField("Text", text: $settings.popupText)
-                        .textFieldStyle(.roundedBorder)
+                    if !settings.useCrackedScreenEffect {
+                        Text("Popup Text:")
+                            .font(.subheadline)
+                            .padding(.top, 8)
+                        
+                        TextField("Text", text: $settings.popupText)
+                            .textFieldStyle(.roundedBorder)
+                        
+                        Text("Popup Color:")
+                            .font(.subheadline)
+                            .padding(.top, 8)
+                        
+                        ColorPicker("Background Color", selection: $settings.popupColor)
+                    } else {
+                        Text("Cracked screen will appear at cursor position")
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                            .padding(.top, 4)
+                    }
+                }
+            }
+            
+            Section(header: Text("Hand Tracking").font(.headline)) {
+                VStack(alignment: .leading, spacing: 8) {
+                    Toggle("Enable Hand Tracking", isOn: $settings.enableHandTracking)
+                        .help("Automatically activate warning when fingers stretch toward screen")
                     
-                    Text("Popup Color:")
-                        .font(.subheadline)
-                        .padding(.top, 8)
+                    Text("Uses Vision framework to detect when you're reaching toward the screen. Works alongside the hot key.")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
                     
-                    ColorPicker("Background Color", selection: $settings.popupColor)
+                    if cameraPermissionStatus == .authorized {
+                        HStack {
+                            Image(systemName: "checkmark.circle.fill")
+                                .foregroundColor(.green)
+                            Text("Camera access granted")
+                                .font(.caption)
+                                .foregroundColor(.green)
+                        }
+                    } else {
+                        Text("⚠️ Requires camera access")
+                            .font(.caption)
+                            .foregroundColor(.orange)
+                        }
                 }
             }
         }.navigationTitle("Settings")
         .formStyle(.grouped)
         .padding(20)
-        .frame(width: 450, height: 400, alignment: .topLeading)
+        .frame(width: 450, height: 550, alignment: .topLeading)
+        .onAppear {
+            checkCameraPermission()
+        }
     }
     
     private func hotKeyDisplayString() -> String {
@@ -94,6 +135,26 @@ struct SettingsView: View {
         ]
         return keyMap[keyCode] ?? "Key \(keyCode)"
     }
+    
+    private func checkCameraPermission() {
+        switch AVCaptureDevice.authorizationStatus(for: .video) {
+        case .authorized:
+            self.cameraPermissionStatus = .authorized
+            break
+        case .notDetermined:
+            AVCaptureDevice.requestAccess(for: .video) { granted in
+                DispatchQueue.main.async {
+                    self.cameraPermissionStatus = granted ? .authorized : .denied
+                }
+            }
+            break
+        case .denied, .restricted:
+            cameraPermissionStatus = .denied
+        @unknown default:
+            break
+        }
+    }
+    
 }
 
 struct HotKeyRecorderView: View {

@@ -34,8 +34,15 @@ class PopupPanel: NSPanel {
     func toggle() {
         if self.isVisible {
             self.orderOut(nil)
+            CrackedScreenPanel.hide()
         } else {
-            showAtMouseLocation()
+            let mouseLocation = NSEvent.mouseLocation
+            
+            if SettingsManager.shared.useCrackedScreenEffect {
+                CrackedScreenPanel.show(at: mouseLocation)
+            } else {
+                showAtMouseLocation()
+            }
         }
     }
     

@@ -47,6 +47,23 @@ class SettingsManager: ObservableObject {
         }
     }
     
+    @Published var useCrackedScreenEffect: Bool {
+        didSet {
+            UserDefaults.standard.set(useCrackedScreenEffect, forKey: "useCrackedScreenEffect")
+        }
+    }
+    
+    @Published var enableHandTracking: Bool {
+        didSet {
+            UserDefaults.standard.set(enableHandTracking, forKey: "enableHandTracking")
+            if enableHandTracking {
+                HandTrackingManager.shared.startTracking()
+            } else {
+                HandTrackingManager.shared.stopTracking()
+            }
+        }
+    }
+    
     private init() {
         self.launchAtLogin = UserDefaults.standard.bool(forKey: "launchAtLogin")
         self.hotKeyModifiers = UInt(UserDefaults.standard.integer(forKey: "hotKeyModifiers"))
@@ -63,10 +80,19 @@ class SettingsManager: ObservableObject {
             self.popupColor = Color.red
         }
         
+        // Load effect and tracking settings
+        self.useCrackedScreenEffect = UserDefaults.standard.bool(forKey: "useCrackedScreenEffect")
+        self.enableHandTracking = UserDefaults.standard.bool(forKey: "enableHandTracking")
+        
         // Set default hot key: Command + Shift + S (keyCode 1)
         if hotKeyModifiers == 0 {
             hotKeyModifiers = UInt(NSEvent.ModifierFlags.command.rawValue | NSEvent.ModifierFlags.shift.rawValue)
             hotKeyKeyCode = 1
+        }
+        
+        // Start hand tracking if enabled
+        if enableHandTracking {
+            HandTrackingManager.shared.startTracking()
         }
     }
     
